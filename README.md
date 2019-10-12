@@ -12,3 +12,7 @@ Sphere function;
 Rosenbrock function;
 Ackley function;
 Griewank function.
+
+
+Resultados de outros algoritmos harmony search que eu utilizei para comparar com o meu estão no seguinte artigo:
+Omran, Mahamed & Mahdavi, Mehrdad. (2008). Global-best harmony search. Applied Mathematics and Computation. 198. 643-656. 10.1016/j.amc.2007.09.004. 
