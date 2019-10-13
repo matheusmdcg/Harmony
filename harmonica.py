@@ -7,12 +7,12 @@ m = 50000  # iterações
 p = 44  # número de possibilidades do CNP para cada instrumento
 # não estou usando p no momento, porque os resultados são contínuos
 HMS = 5  # numero de harmonias na HM
-ni = 30  # numero de instrumentos (cada instrumento seria uma dimensão da função)
+ni = 100  # numero de instrumentos (cada instrumento seria uma dimensão da função)
 
 HMCR = 0.9
 PAR = 0.3
 Discreta = False
-mpap = 0.45  # O range a ser utilizado no ajuste de nota (escolher um vizinho do CNP) quando a variável é continua
+mpap = 0.25  # O range a ser utilizado no ajuste de nota (escolher um vizinho do CNP) quando a variável é continua
 mpai = 3  # O range a ser utilizado no ajuste de nota (escolher um vizinho do CNP) quando a variável é discreta;
 
 media = 0  # resultado médio
@@ -22,26 +22,30 @@ vezes = 50
 
 # Sphere function
 def qualidade(x):
-   suma = 0
-   for i in range(0, ni):  # para cada dimensão
-       suma = suma + (x[i] ** 2)
+    suma = 0
+    for i in range(0, ni):  # para cada dimensão
+        suma = suma + (x[i] ** 2)
 
-   return -suma
-#
+    return -suma
+
+
+# #
 #
 # # Rosenbrock function
 # def qualidade(x):
-#    sum = 0
+#     sum = 0
 #
-#    for i in range(0, ni - 1):
-#        xi = x[i]
-#        xnext = x[i + 1]
-#        sum = sum + (100 * (xnext - xi ** 2) ** 2 + (xi - 1) ** 2)
+#     for i in range(0, ni - 1):
+#         xi = x[i]
+#         xnext = x[i + 1]
+#         sum = sum + (100 * (xnext - xi ** 2) ** 2 + (xi - 1) ** 2)
 #
-#    return -sum  # quanto maior o somatório, menor será a qualidade da harmonia, porque eu quero o minimo global
+#     return -sum  # quanto maior o somatório, menor será a qualidade da harmonia, porque eu quero o minimo global
+
+
 #
 #
-# # Ackley
+# Ackley
 # def qualidade(x):
 #     sum01 = 0
 #     sum02 = 0
@@ -56,7 +60,7 @@ def qualidade(x):
 #     return -round((term01 + term02 + 20 + math.exp(1)), 5)
 #
 #
-# # Griewank
+# Griewank
 # def qualidade(x):
 #      sum01 = 0
 #      produ = 1
