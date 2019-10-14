@@ -7,7 +7,7 @@ m = 50000  # iterações
 p = 44  # número de possibilidades do CNP para cada instrumento
 # não estou usando p no momento, porque os resultados são contínuos
 HMS = 5  # numero de harmonias na HM
-ni = 100  # numero de instrumentos (cada instrumento seria uma dimensão da função)
+ni = 30  # numero de instrumentos (cada instrumento seria uma dimensão da função)
 
 HMCR = 0.9
 PAR = 0.3
@@ -21,17 +21,14 @@ vezes = 50
 
 
 # Sphere function
-def qualidade(x):
-    suma = 0
-    for i in range(0, ni):  # para cada dimensão
-        suma = suma + (x[i] ** 2)
-
-    return -suma
-
-
-# #
+# def qualidade(x):
+#     suma = 0
+#     for i in range(0, ni):  # para cada dimensão
+#         suma = suma + (x[i] ** 2)
 #
-# # Rosenbrock function
+#     return -suma
+#
+# Rosenbrock function
 # def qualidade(x):
 #     sum = 0
 #
@@ -41,8 +38,7 @@ def qualidade(x):
 #         sum = sum + (100 * (xnext - xi ** 2) ** 2 + (xi - 1) ** 2)
 #
 #     return -sum  # quanto maior o somatório, menor será a qualidade da harmonia, porque eu quero o minimo global
-
-
+#
 #
 #
 # Ackley
@@ -125,8 +121,8 @@ iatual = np.zeros([vezes])
 start_time = time.time()
 mel = 1000000
 for execu in range(vezes):  # quantas execuções
-    inf = -100
-    sup = 100
+    inf = -600
+    sup = 600
     HM = {}
     if Discreta:
         cnp = np.empty([ni, p])
@@ -203,7 +199,7 @@ for execu in range(vezes):
     desvioabsolutomedio02 = desvioabsolutomedio02 + abs(iatual[execu] - mediai)
 
 desvio = (variancia / vezes) ** (1 / 2)
-desvio02 = (variancia02 / vezes) ** (1 / 2)  # desvio de quantidade de iterações
+desvio02 = (variancia02 / vezes) ** (1 / 2)  # desvio padrão da quantidade de iterações
 desvioabsolutomedio = desvioabsolutomedio / vezes
 desvioabsolutomedio02 = desvioabsolutomedio02 / vezes  # regarding iterações
 
