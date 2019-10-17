@@ -4,12 +4,6 @@ Atenciosamente, Matheus Moreira de Camargo
 
 Funções já implementadas: Sphere function; Rosenbrock function; Ackley function; Griewank function.
 
-Funções já implementadas:
-Sphere function;
-Rosenbrock function;
-Ackley function;
-Griewank function.
-
 
 Link do drive com o arquivo de comparações: https://docs.google.com/spreadsheets/d/1zHJ8lALctjln1G_OT-o0kAo1JdPLKi9YdaIfPeXmXQU/edit?usp=sharing
 
