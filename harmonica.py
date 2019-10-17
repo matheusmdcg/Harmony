@@ -7,26 +7,26 @@ m = 50000  # iterações
 p = 44  # número de possibilidades do CNP para cada instrumento
 # não estou usando p no momento, porque os resultados são contínuos
 HMS = 5  # numero de harmonias na HM
-ni = 30  # numero de instrumentos (cada instrumento seria uma dimensão da função)
+ni = 100  # numero de instrumentos (cada instrumento seria uma dimensão da função)
 
-HMCR = 0.9
-PAR = 0.3
+HMCR = 0.75
+PAR = 0.35
 Discreta = False
-mpap = 0.25  # O range a ser utilizado no ajuste de nota (escolher um vizinho do CNP) quando a variável é continua
+mpap = 0.35  # O range a ser utilizado no ajuste de nota (escolher um vizinho do CNP) quando a variável é continua
 mpai = 3  # O range a ser utilizado no ajuste de nota (escolher um vizinho do CNP) quando a variável é discreta;
 
 media = 0  # resultado médio
 mediai = 0  # média de iterações
-vezes = 50
+vezes = 5
 
 
 # Sphere function
-# def qualidade(x):
-#     suma = 0
-#     for i in range(0, ni):  # para cada dimensão
-#         suma = suma + (x[i] ** 2)
-#
-#     return -suma
+def qualidade(x):
+    suma = 0
+    for i in range(0, ni):  # para cada dimensão
+        suma = suma + (x[i] ** 2)
+
+    return -suma
 #
 # Rosenbrock function
 # def qualidade(x):
@@ -102,7 +102,7 @@ def ajustarnota(aux, j, z):
 
 def atualizarmemoria(y):
     newQuality = round(qualidade(y), 5)
-    menor = sorted(list(HM.keys()))[0]
+    menor = min(list(HM.keys()))
     if newQuality not in HM:
         if newQuality > menor:
             del HM[menor]
@@ -163,7 +163,7 @@ for execu in range(vezes):  # quantas execuções
                 novaHarmonia[j] = round(considerarcnp(j, z), 5)
         atualizarmemoria(novaHarmonia)
 
-        if sorted(list(HM.keys()))[len(HM.keys()) - 1] == 0:  # Se encontrou a melhor solução
+        if max(list(HM.keys())) == 0:  # Se encontrou a melhor solução
             print("\nvalor de i atual: ", i + 1)
             mediai = mediai + 1
             iatual[execu] = i + 1
